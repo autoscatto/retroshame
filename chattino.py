@@ -158,7 +158,7 @@ while(True):
       except KeyboardInterrupt: ## TODO una interazione seria (part, addblacklist, reload etc)
         inp = raw_input( 'chattino$ ' )
         if(inp in ["Exit","exit","Quit","quit"] ):
-            break;
+            break
         if(inp in ["leave"]):
             inp=raw_input( 'channel to leave: ' )
             l_id=LOBBIES.get(inp,False)
@@ -182,6 +182,15 @@ while(True):
        if ans:
         (msg_id, msg_body) = ans;
         resp = parser.construct(msg_id, msg_body);
+        if "!kill" in msg_body:
+                  print "KILLED!!!!!!!!!!!!"
+                  inv_map = dict((LOBBIES[k], k) for k in LOBBIES)
+                  bb=inv_map.get(resp.msg.id.chat_id,False)
+                  if bb:
+                    BLACKLIST.append(bb)
+                    req_id = join_leave(resp.msg.id.chat_id,False)
+                    next_req_cycle.append(req_id);
+
        else:
         more_resp = False;
 
