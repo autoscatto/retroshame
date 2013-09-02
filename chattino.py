@@ -137,7 +137,7 @@ while(True):
                   if not bldict.has_key(lobby.lobby_name): ## faccio la req solo se non sono blacklistato
                       print ""
                       print "-"*20
-                      print "Sending Request to Join Public ChatLobby %s" % (lobby.lobby_name)
+                      print u"Sending Request to Join Public ChatLobby %s" % ((lobby.lobby_name).encode('utf-8'))
                       print "-"*20
                       req_id = join_leave(lobby.lobby_id,True)
                       next_req_cycle.append(req_id)
